@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import Button from 'react-bootstrap/Button';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import useFetch from './hooks/useFetch';
+import NbaTable from './components/NbaTable';
 
 function App() {
+  const { data, loading, error } = useFetch(process.env.REACT_APP_TEAM_API);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>NBA</h1>
+      {loading && 'Loading...'}
+      {error && 'error'}
+      {data.length && <NbaTable data={data} />}
     </div>
   );
 }
