@@ -1,9 +1,9 @@
 import React from 'react'
 
-function Pagination() {
+function TablePagination() {
   return (
     <div>Pagination</div>
   )
 }
 
-export default Pagination
+export default TablePagination

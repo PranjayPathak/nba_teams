@@ -1,8 +1,9 @@
 import React from 'react'
 import Table from 'react-bootstrap/Table'
 
-function NbaTable({ data }) {
+function NbaTable({ data, setSelectedTeam }) {
     console.log('table:', Object.keys(data[0]));
+    
     return (
         <div>
             <Table striped bordered hover>
@@ -27,7 +28,9 @@ function NbaTable({ data }) {
                     {
                         data.map(team => {
                             return (
-                                <tr key={team.id}>
+                                <tr key={team.id} onClick={() => {
+                                    setSelectedTeam(team)
+                                }}>
                                     <td>{team.name}</td>
                                     <td>{team.city}</td>
                                     <td>{team.abbreviation}</td>
