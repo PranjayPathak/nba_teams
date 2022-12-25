@@ -7,44 +7,40 @@ import * as constants from '../constants'
 
 function NbaTable({ data, page, setSelectedTeam }) {
     // console.log('table:', Object.keys(data[0]));
-
-    return (
-        <div>
-            {/* <BootstrapTable keyField='id' data={data} constants.COLUMNS={constants.COLUMNS}
+    {/* <BootstrapTable keyField='id' data={data} constants.COLUMNS={constants.COLUMNS}
                 pagination={paginationFactory()}
             /> */}
-            <Table striped bordered hover>
-                <thead>
-                    <tr>
-                        {
-                            constants.COLUMNS.map((col) => {
-                                return <th key={col.text}>{col.text}</th>
-                            })
-                        }
-                    </tr>
-                </thead>
-                <tbody>
+    return (
+        <Table className='nba-table' hover>
+            <thead className='rounded nba-table__head'>
+                <tr>
                     {
-                        data.slice(
-                            (page - 1) * constants.DATA_PER_PAGE,
-                            page * constants.DATA_PER_PAGE
-                        ).map(team => {
-                            return (
-                                <tr key={team.id} onClick={() => {
-                                    setSelectedTeam(team)
-                                }}>
-                                    {
-                                        constants.COLUMNS.map((col) => {
-                                            return <td key={col.text}>{team[col.dataField]}</td>
-                                        })
-                                    }
-                                </tr>)
-
+                        constants.COLUMNS.map((col) => {
+                            return <th key={col.text}>{col.text}</th>
                         })
                     }
-                </tbody>
-            </Table>
-        </div>
+                </tr>
+            </thead>
+            <tbody className='nba-table__body'>
+                {data.length > 0 ?
+                    data.slice(
+                        (page - 1) * constants.DATA_PER_PAGE,
+                        page * constants.DATA_PER_PAGE
+                    ).map(team => {
+                        return (
+                            <tr className='nba-table__body__row' key={team.id} onClick={() => {
+                                setSelectedTeam(team)
+                            }}>
+                                {
+                                    constants.COLUMNS.map((col) => {
+                                        return <td key={col.text}>{team[col.dataField]}</td>
+                                    })
+                                }
+                            </tr>)
+                    }) : <tr><td colSpan={constants.COLUMNS.length}>Oops! no data found.</td></tr>
+                }
+            </tbody>
+        </Table>
     )
 }
 

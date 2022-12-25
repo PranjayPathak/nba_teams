@@ -19,7 +19,7 @@ function reducer(state, { type, payload }) {
         case ACTIONS.API_REQUEST:
             return { ...state, data: [], loading: true }
         case ACTIONS.FETCH_DATA:
-            return { ...state, data: payload.data, loading: false }
+            return { ...state, data: payload.data, meta: payload.meta, loading: false }
         case ACTIONS.ERROR:
             return { ...state, data: [], error: true }
         default:

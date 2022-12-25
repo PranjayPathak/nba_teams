@@ -28,7 +28,7 @@ function TablePagination({ total, current, onPageChange }) {
   // }
 
   return (
-    <Pagination>
+    <Pagination className='table-pagination' >
       <Pagination.Prev key='prev' disabled={current <= 1} onClick={() => {
         onPageChange(current - 1)
       }} />

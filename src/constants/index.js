@@ -7,4 +7,13 @@ export const COLUMNS = [
     { dataField: 'conference', text: 'Conference' },
     { dataField: 'division', text: 'Divison' },
 ]
-// export default constants
+
+// export const CARD_COLUMNS = [
+//     { dataField: 'date', text: 'Date' },
+//     { dataField: "home_team", text: 'Home Team' },
+//     { dataField: 'home_team_score', text: 'Home Team Score' },
+//     { dataField: 'visitor_team', text: 'Visitor Team' },
+//     { dataField: 'visitor_team_score', text: 'Visitor Team Score' },
+// ]
+
+export const GAME_SEASON = 2021;

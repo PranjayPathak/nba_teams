@@ -2,3 +2,120 @@
 // .App{
 //     min-height: 100vh;
 // }
+
+$color-primary: #074684;
+$color-secondary: #F8FBFD;
+$color-black: #000000;
+$color-white: #ffffff;
+$color-grey: #D8DFE4;
+
+
+.header {
+    &-1 {
+        font-weight: 500;
+        color: $color-primary;
+    }
+}
+
+.search-input {
+    width: 100%;
+    max-width: 50%;
+    border: 2px solid $color-primary;
+    outline: none;
+    height: 3rem;
+}
+
+.table-wrapper {
+    .spinner-container {
+        min-height: 10rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 30rem;
+    }
+
+    .nba-table {
+        text-align: center;
+        margin: 0 !important;
+        $brd-radius: 0.25rem;
+
+        &__head {
+            color: $color-white;
+            font-weight: 600;
+
+            th {
+                vertical-align: middle;
+                height: 3.5rem;
+                background-color: $color-primary;
+                // border-radius: 33px;
+
+                // &:last-of-type{
+                //     border-top-right-radius: $brd-radius;
+                //     border-bottom-right-radius: $brd-radiuss;
+                // }
+            }
+        }
+
+        &__body {
+            &__row {
+                color: $color-black;
+                background-color: $color-secondary;
+                border: 5px solid $color-white;
+                border-left: none;
+                border-right: none;
+                height: 3.5rem;
+                font-weight: 500;
+
+                td {
+                    vertical-align: middle;
+                }
+            }
+        }
+    }
+}
+
+.table-pagination {
+    font-weight: 600;
+    float: right;
+
+    .active>span {
+        border-radius: 10px;
+        background-color: lighten($color: $color-primary, $amount: 13);
+    }
+
+    li {
+        margin: 0.3rem;
+        border-radius: 10px;
+
+        a {
+            background-color: $color-primary;
+            color: $color-white;
+            // border: none;
+            border-radius: 10px;
+
+            &:hover {
+                background-color: lighten($color: $color-primary, $amount: 6);
+                color: $color-white;
+            }
+        }
+
+    }
+}
+
+.canvas {
+
+    &__head {
+        background-color: $color-grey;
+        padding-left: 5rem;
+
+        &--heading {
+            font-weight: 700;
+        }
+    }
+
+    &__body {
+        &--bold {
+            font-weight: 600;
+        }
+    }
+}
