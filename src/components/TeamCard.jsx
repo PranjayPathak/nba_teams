@@ -1,22 +1,19 @@
 import Offcanvas from 'react-bootstrap/Offcanvas';
-// import Placeholder from 'react-bootstrap/Placeholder';
 import useFetch from '../hooks/useFetch';
 import * as constants from '../constants'
 import { useMemo } from 'react';
 
 
-function TeamCard({ selectedTeam, setSelectedTeam }) {
-    const { data, meta, loading, error } = useFetch(`${process.env.REACT_APP_GAME_API}?seasons[]=${constants.GAME_SEASON}&team_ids[]=${selectedTeam.id}`);
-
-    const randomGame = useMemo(() => {
-        let val = Math.floor(Math.random() * (data?.length));
-        return data != undefined ? data[val] : null
-    }, [data])
+function TeamCard({ selectedTeam, openCard, setOpenCard }) {
+    // fetch games data
+    const { data, meta, loading } = useFetch(`${process.env.REACT_APP_GAME_API}?seasons[]=${constants.GAME_SEASON}&team_ids[]=${selectedTeam.id}`);
 
     const randomGameDetails = useMemo(() => {
+        let randomGame = data?.[Math.floor(Math.random() * (data?.length))]; // select random game
         let gameDate = new Date(randomGame?.date);
-        gameDate = `${gameDate.getFullYear()}-${gameDate.getMonth()}-${gameDate.getDate()}`;
+        gameDate = `${gameDate.getFullYear()} - ${gameDate.getMonth()} - ${gameDate.getDate()}`; // formate date
 
+        // return random game details
         return [
             { dataField: gameDate, text: 'Date' },
             { dataField: randomGame?.home_team.name, text: 'Home Team' },
@@ -27,8 +24,8 @@ function TeamCard({ selectedTeam, setSelectedTeam }) {
     }, [data])
 
     return (
-        <Offcanvas className='canvas' show={selectedTeam !== null} onHide={() => {
-            setSelectedTeam(null);
+        <Offcanvas className='canvas' show={openCard} onHide={() => {
+            setOpenCard(false);
         }}
             placement='end'>
             <Offcanvas.Header closeButton className='canvas__head px-4'>

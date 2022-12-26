@@ -1,8 +1,4 @@
-// @import "~bootstrap/scss/bootstrap";
-// .App{
-//     min-height: 100vh;
-// }
-
+// SASS Variabless
 $color-primary: #074684;
 $color-secondary: #F8FBFD;
 $color-black: #000000;
@@ -90,7 +86,6 @@ $color-grey: #D8DFE4;
         a {
             background-color: $color-primary;
             color: $color-white;
-            // border: none;
             border-radius: 10px;
 
             &:hover {

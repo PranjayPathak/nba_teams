@@ -5,11 +5,8 @@ import * as constants from '../constants'
 // import BootstrapTable from 'react-bootstrap-table-next';
 // import paginationFactory from 'react-bootstrap-table2-paginator';
 
-function NbaTable({ data, page, setSelectedTeam }) {
-    // console.log('table:', Object.keys(data[0]));
-    {/* <BootstrapTable keyField='id' data={data} constants.COLUMNS={constants.COLUMNS}
-                pagination={paginationFactory()}
-            /> */}
+function NbaTable({ data, page, setSelectedTeam, setOpenCard }) {
+
     return (
         <Table className='nba-table' hover>
             <thead className='rounded nba-table__head'>
@@ -22,6 +19,7 @@ function NbaTable({ data, page, setSelectedTeam }) {
                 </tr>
             </thead>
             <tbody className='nba-table__body'>
+                {/* Slice data based on pagination */}
                 {data.length > 0 ?
                     data.slice(
                         (page - 1) * constants.DATA_PER_PAGE,
@@ -29,7 +27,8 @@ function NbaTable({ data, page, setSelectedTeam }) {
                     ).map(team => {
                         return (
                             <tr className='nba-table__body__row' key={team.id} onClick={() => {
-                                setSelectedTeam(team)
+                                setSelectedTeam(team);
+                                setOpenCard(true);
                             }}>
                                 {
                                     constants.COLUMNS.map((col) => {
